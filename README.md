@@ -1,14 +1,28 @@
-# Project
+# Virtual Visit Sample Connector
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+## Scenario
 
-As the maintainer of this project, please make a few updates:
+A very common healthcare scenario for providers as well as payors is creating an on-demand virtual visit. The Teams platform Microsoft has a Virtual Appointment capability available through the Microsoft Graph that extends the *onlineMeeting* to include enhancements like a mobile-browser join (without requiring a custom communication service or download like the Teams app), an enhanced waiting room, and additional reporting/analytics for virtual appointments. Additionally, meetings can be associated to meeting ID's from 3rd party scheduling systems directly within the virtual appointment definition.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Unfortunately, at this time there is not a published Connector for these API calls, so building a solution requires some additional steps and skills to either manually call the Graph API or build a custom connector.
+
+## Solution
+
+This repository includes a sample OpenAPI (Swagger) definition which can be imported through the Power Platform maker portal and used to test out the capabilities. While creating a custom connector is not overly complex, it can be helpful to learn from an example instead of starting from a completely "blank page".
+
+[Virtual Visit OpenAPI definition](./Virtual-Visit.swagger.json)
+
+As of this release, the virtualAppointment capabilities are in [public preview](https://docs.microsoft.com/en-us/graph/versioning-and-support#beta-version), which is reflected in the OpenAPI definition.
+
+## Deployment
+
+
+
+## Background
+
+The Microsoft Graph is the gateway to data and intelligence in Microsoft 365 includes many capabilities that are useful when building apps, including low-code applications using Logic Apps and the Power Platform. There are hundreds of Microsoft Connectors that make use of these services, while many more capabilities are available just out of sight.
+
+Custom connectors can provide a purpose-driven experience, standardizing how low-code developers interact with both well-known or custom APIs, improving time to value and reducing technology risk.
 
 ## Contributing
 
