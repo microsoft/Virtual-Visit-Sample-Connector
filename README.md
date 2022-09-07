@@ -29,9 +29,9 @@ The official documentation for deploying a custom connector from an OpenAPI defi
 
 The screenshot below shows an example of how this could be called from a Power App leveraging a Power Automate cloud flow automation, assuming no Online Meeting existed. It will return the join links to the app.
 
-****need sample image.png
+![Cloud flow to create a virtual appointment](images/VirtualVisitAutomationSteps.png)
 
-The join links can be distributed using SMS, email, secure portal messages, etc.
+The join links can be distributed using SMS, email, secure portal messages, etc. through additional steps in this automation.
 
 ## Background
 
