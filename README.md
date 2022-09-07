@@ -1,5 +1,7 @@
 # Virtual Visit Sample Connector
 
+Sample custom connector for virtual appointment API.
+
 ## Scenario
 
 A very common healthcare scenario for providers as well as payors is creating an on-demand virtual visit. The Teams platform Microsoft has a Virtual Appointment capability available through the Microsoft Graph that extends the *onlineMeeting* to include enhancements like a mobile-browser join (without requiring a custom communication service or download like the Teams app), an enhanced waiting room, and additional reporting/analytics for virtual appointments. Additionally, meetings can be associated to meeting ID's from 3rd party scheduling systems directly within the virtual appointment definition.
@@ -10,13 +12,26 @@ Unfortunately, at this time there is not a published Connector for these API cal
 
 This repository includes a sample OpenAPI (Swagger) definition which can be imported through the Power Platform maker portal and used to test out the capabilities. While creating a custom connector is not overly complex, it can be helpful to learn from an example instead of starting from a completely "blank page".
 
-[Virtual Visit OpenAPI definition](./Virtual-Visit.swagger.json)
-
 As of this release, the virtualAppointment capabilities are in [public preview](https://docs.microsoft.com/en-us/graph/versioning-and-support#beta-version), which is reflected in the OpenAPI definition.
 
 ## Deployment
 
+The sample connector OpenAPI definition is available from this repository. [Virtual Visit OpenAPI definition](./Virtual-Visit.swagger.json)
 
+Creating a custom connector to the Microsoft Graph is a 3-step process. These steps are outlined in this [Microsoft Tech Community video](https://techcommunity.microsoft.com/t5/healthcare-and-life-sciences/create-a-custom-powerapp-connector-to-graph-api/ba-p/3494104).
+
+The official documentation for deploying a custom connector from an OpenAPI definition is available at [Microsoft Docs](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition-for-power-automate-and-power-apps)
+
+## Usage
+
+1. First, identify an online meeting ID for which you will set up as a virtualAppointment. If an online meeting does not exist, the custom connector includes an Action for doing this, which will supply an online meeting ID field, as well as the practitioner join link.
+2. Second, use the Create Virtual Appointment (beta) action to add the virtual visit capabilities and consumer join link.
+
+The screenshot below shows an example of how this could be called from a Power App leveraging a Power Automate cloud flow automation, assuming no Online Meeting existed. It will return the join links to the app.
+
+****need sample image.png
+
+The join links can be distributed using SMS, email, secure portal messages, etc.
 
 ## Background
 
