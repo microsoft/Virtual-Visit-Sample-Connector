@@ -2,27 +2,60 @@
 
 Sample custom connector for virtual appointment API.
 
-## Scenario
+## Scenario overview
 
 A very common healthcare scenario for providers as well as payors is creating an on-demand virtual visit. The Teams platform Microsoft has a Virtual Appointment capability available through the Microsoft Graph that extends the *onlineMeeting* to include enhancements like a mobile-browser join (without requiring a custom communication service or download like the Teams app), an enhanced waiting room, and additional reporting/analytics for virtual appointments. Additionally, meetings can be associated to meeting ID's from 3rd party scheduling systems directly within the virtual appointment definition.
 
 Unfortunately, at this time there is not a published Connector for these API calls, so building a solution requires some additional steps and skills to either manually call the Graph API or build a custom connector.
 
-## Solution
+## Solution overview
 
 This repository includes a sample OpenAPI (Swagger) definition which can be imported through the Power Platform maker portal and used to test out the capabilities. While creating a custom connector is not overly complex, it can be helpful to learn from an example instead of starting from a completely "blank page".
 
 As of this release, the virtualAppointment capabilities are in [public preview](https://docs.microsoft.com/en-us/graph/versioning-and-support#beta-version), which is reflected in the OpenAPI definition.
 
-## Deployment
+## Deploying the connector
 
-The sample connector OpenAPI definition is available from this repository. [Virtual Visit OpenAPI definition](./Virtual-Visit.swagger.json)
+Deployment includes the following tasks:
 
-Creating a custom connector to the Microsoft Graph is a 3-step process. These steps are outlined in this [Microsoft Tech Community video](https://techcommunity.microsoft.com/t5/healthcare-and-life-sciences/create-a-custom-powerapp-connector-to-graph-api/ba-p/3494104).
+1. Set up an Azure Application Registration
+2. Add the custom connector in an environment
 
-The official documentation for deploying a custom connector from an OpenAPI definition is available at [Microsoft Docs](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition-for-power-automate-and-power-apps)
+### Task 1 - Set up an Azure Application Registration
 
-## Usage
+ The steps for creating the Azure Application Registration are covered in this [Microsoft Tech Community video](https://techcommunity.microsoft.com/t5/healthcare-and-life-sciences/create-a-custom-powerapp-connector-to-graph-api/ba-p/3494104). When setting up the Azure Application Registration this connector, reference the following:
+
+- The Azure portal is accessed here: [Azure portal](https://portal.azure.com)
+- Web Redirect URI: `https://global.consent.azure-apim.net/redirect`
+- API Permissions (Microsoft Graph)
+  - `User.Read`
+  - `OnlineMeetings.ReadWrite`
+  - `UserAuthenticationMethod.ReadWrite.All` (Admin consent required)
+
+At completion of this task, make sure that you have the following Application Registration details which are needed for the second task
+
+- `Client ID`
+- `Client Secret`
+
+### Task 2 - Create the custom connector in an environment
+
+Unlike the connector in the video, this connector is created from an OpenAPI definition (not a Postman collection). When setting up the Azure Application Registration this connector, reference the following:
+
+- The Power Apps maker portal is accessed here: [Power Apps maker portal](https://make.powerapps.com)
+  - In your selected Environment, navigate to **Dataverse->Custom Connectors**
+- The custom connector OpenAPI definition is available from this repository. [Virtual Visit OpenAPI definition](./Virtual-Visit.swagger.json)
+- For the Security tab, reference the following values which are specific to this connector:
+
+|||
+|---|---|
+|**Client id**| `Client ID` (from the previous task)|
+|**Client secret**| `Client Secret` (from the previous task)|
+|**Resource URL**| `https://graph.microsoft.com/`|
+|**Scope**| `OnlineMeetings.ReadWrite`|
+
+The official documentation for deploying a custom connector from an OpenAPI definition is available at [Microsoft Docs](https://docs.microsoft.com/en-us/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition-for-power-automate-and-power-apps).
+
+## Using the connector
 
 1. First, identify an online meeting ID for which you will set up as a virtualAppointment. If an online meeting does not exist, the custom connector includes an Action for doing this, which will supply an online meeting ID field, as well as the practitioner join link.
 2. Second, use the Create Virtual Appointment (beta) action to add the virtual visit capabilities and consumer join link.
