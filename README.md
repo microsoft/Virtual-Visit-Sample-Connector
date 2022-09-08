@@ -42,8 +42,9 @@ At completion of this task, make sure that you have the following Application Re
 Unlike the connector in the video, this connector is created from an OpenAPI definition (not a Postman collection). When setting up the Azure Application Registration this connector, reference the following:
 
 - The Power Apps maker portal is accessed here: [Power Apps maker portal](https://make.powerapps.com)
-  - In your selected Environment, navigate to **Dataverse->Custom Connectors**
-- The custom connector OpenAPI definition is available from this repository. [Virtual Visit OpenAPI definition](./Virtual-Visit.swagger.json)
+- The custom connector OpenAPI sample definition is available from this repository: [Virtual Visit OpenAPI definition](./Virtual-Visit.swagger.json)
+- In your selected Environment, navigate to **Dataverse->Custom Connectors**
+- Select **New Custom Connector-->Import an OpenAPI file**
 - For the Security tab, reference the following values which are specific to this connector:
 
 |||
