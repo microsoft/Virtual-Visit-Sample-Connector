@@ -1,0 +1,558 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.1.0",
+    "title": "Virtual Appointment (beta)",
+    "description": "Core actions for creating an onlineMeeting and initiating a virtualAppointment using the Microsoft Graph API."
+  },
+  "host": "graph.microsoft.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/beta/me/onlineMeetings": {
+      "post": {
+        "summary": "Create an online meeting (beta)",
+        "description": "onlineMeetings-beta",
+        "operationId": "Create-online-meeting-beta",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "startDateTime": {
+                  "type": "string",
+                  "description": "startDateTime",
+                  "title": "Meeting start time",
+                  "x-ms-visibility": "important"
+                },
+                "endDateTime": {
+                  "type": "string",
+                  "description": "endDateTime",
+                  "title": "Meeting end time",
+                  "x-ms-visibility": "important"
+                },
+                "subject": {
+                  "type": "string",
+                  "description": "subject",
+                  "title": "Meeting subject",
+                  "x-ms-visibility": "advanced",
+                  "default": "online meeting"
+                }
+              },
+              "x-ms-visibility": "important",
+              "required": [
+                "endDateTime",
+                "startDateTime"
+              ]
+            },
+            "x-ms-visibility": "important"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@odata.context": {
+                  "type": "string",
+                  "description": "@odata.context"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "The onlineMeetingId value used when setting up virtualAppointments.",
+                  "title": "onlineMeetingId",
+                  "x-ms-visibility": "important"
+                },
+                "creationDateTime": {
+                  "type": "string",
+                  "description": "creationDateTime"
+                },
+                "startDateTime": {
+                  "type": "string",
+                  "description": "startDateTime"
+                },
+                "endDateTime": {
+                  "type": "string",
+                  "description": "endDateTime"
+                },
+                "joinUrl": {
+                  "type": "string",
+                  "description": "joinUrl",
+                  "title": "Teams Client Join URL",
+                  "x-ms-visibility": "important"
+                },
+                "joinWebUrl": {
+                  "type": "string",
+                  "description": "joinWebUrl"
+                },
+                "meetingCode": {
+                  "type": "string",
+                  "description": "meetingCode"
+                },
+                "subject": {
+                  "type": "string",
+                  "description": "subject"
+                },
+                "isBroadcast": {
+                  "type": "boolean",
+                  "description": "isBroadcast"
+                },
+                "autoAdmittedUsers": {
+                  "type": "string",
+                  "description": "autoAdmittedUsers"
+                },
+                "outerMeetingAutoAdmittedUsers": {
+                  "type": "string",
+                  "description": "outerMeetingAutoAdmittedUsers"
+                },
+                "isEntryExitAnnounced": {
+                  "type": "boolean",
+                  "description": "isEntryExitAnnounced"
+                },
+                "allowedPresenters": {
+                  "type": "string",
+                  "description": "allowedPresenters"
+                },
+                "allowMeetingChat": {
+                  "type": "string",
+                  "description": "allowMeetingChat"
+                },
+                "allowTeamworkReactions": {
+                  "type": "boolean",
+                  "description": "allowTeamworkReactions"
+                },
+                "allowAttendeeToEnableMic": {
+                  "type": "boolean",
+                  "description": "allowAttendeeToEnableMic"
+                },
+                "allowAttendeeToEnableCamera": {
+                  "type": "boolean",
+                  "description": "allowAttendeeToEnableCamera"
+                },
+                "recordAutomatically": {
+                  "type": "boolean",
+                  "description": "recordAutomatically"
+                },
+                "anonymizeIdentityForRoles": {
+                  "type": "array",
+                  "items": {},
+                  "description": "anonymizeIdentityForRoles"
+                },
+                "capabilities": {
+                  "type": "array",
+                  "items": {},
+                  "description": "capabilities"
+                },
+                "videoTeleconferenceId": {
+                  "type": "string",
+                  "description": "videoTeleconferenceId"
+                },
+                "externalId": {
+                  "type": "string",
+                  "description": "externalId"
+                },
+                "broadcastSettings": {
+                  "type": "string",
+                  "description": "broadcastSettings"
+                },
+                "meetingInfo": {
+                  "type": "string",
+                  "description": "meetingInfo"
+                },
+                "participants": {
+                  "type": "object",
+                  "properties": {
+                    "organizer": {
+                      "type": "object",
+                      "properties": {
+                        "upn": {
+                          "type": "string",
+                          "description": "upn"
+                        },
+                        "role": {
+                          "type": "string",
+                          "description": "role"
+                        },
+                        "identity": {
+                          "type": "object",
+                          "properties": {
+                            "application": {
+                              "type": "string",
+                              "description": "application"
+                            },
+                            "device": {
+                              "type": "string",
+                              "description": "device"
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "description": "id"
+                                },
+                                "displayName": {
+                                  "type": "string",
+                                  "description": "displayName"
+                                },
+                                "tenantId": {
+                                  "type": "string",
+                                  "description": "tenantId"
+                                },
+                                "identityProvider": {
+                                  "type": "string",
+                                  "description": "identityProvider"
+                                }
+                              },
+                              "description": "user"
+                            }
+                          },
+                          "description": "identity"
+                        }
+                      },
+                      "description": "organizer"
+                    },
+                    "attendees": {
+                      "type": "array",
+                      "items": {},
+                      "description": "attendees"
+                    },
+                    "producers": {
+                      "type": "array",
+                      "items": {},
+                      "description": "producers"
+                    },
+                    "contributors": {
+                      "type": "array",
+                      "items": {},
+                      "description": "contributors"
+                    }
+                  },
+                  "description": "participants"
+                },
+                "lobbyBypassSettings": {
+                  "type": "object",
+                  "properties": {
+                    "scope": {
+                      "type": "string",
+                      "description": "scope"
+                    },
+                    "isDialInBypassEnabled": {
+                      "type": "boolean",
+                      "description": "isDialInBypassEnabled"
+                    }
+                  },
+                  "description": "lobbyBypassSettings"
+                },
+                "joinMeetingIdSettings": {
+                  "type": "object",
+                  "properties": {
+                    "isPasscodeRequired": {
+                      "type": "boolean",
+                      "description": "isPasscodeRequired"
+                    },
+                    "joinMeetingId": {
+                      "type": "string",
+                      "description": "joinMeetingId"
+                    },
+                    "passcode": {
+                      "type": "string",
+                      "description": "passcode"
+                    }
+                  },
+                  "description": "joinMeetingIdSettings"
+                },
+                "audioConferencing": {
+                  "type": "object",
+                  "properties": {
+                    "conferenceId": {
+                      "type": "string",
+                      "description": "conferenceId"
+                    },
+                    "tollNumber": {
+                      "type": "string",
+                      "description": "tollNumber"
+                    },
+                    "tollFreeNumber": {
+                      "type": "string",
+                      "description": "tollFreeNumber"
+                    },
+                    "dialinUrl": {
+                      "type": "string",
+                      "description": "dialinUrl"
+                    },
+                    "tollNumbers": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "tollNumbers"
+                    },
+                    "tollFreeNumbers": {
+                      "type": "array",
+                      "items": {},
+                      "description": "tollFreeNumbers"
+                    }
+                  },
+                  "description": "audioConferencing"
+                },
+                "chatInfo": {
+                  "type": "object",
+                  "properties": {
+                    "threadId": {
+                      "type": "string",
+                      "description": "threadId"
+                    },
+                    "messageId": {
+                      "type": "string",
+                      "description": "messageId"
+                    },
+                    "replyChainMessageId": {
+                      "type": "string",
+                      "description": "replyChainMessageId"
+                    }
+                  },
+                  "description": "chatInfo"
+                },
+                "joinInformation": {
+                  "type": "object",
+                  "properties": {
+                    "content": {
+                      "type": "string",
+                      "description": "content"
+                    },
+                    "contentType": {
+                      "type": "string",
+                      "description": "contentType"
+                    }
+                  },
+                  "description": "joinInformation"
+                }
+              }
+            },
+            "headers": {
+              "Content-Type": {
+                "description": "Content-Type",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "x-ms-visibility": "important"
+      }
+    },
+    "/beta/me/onlineMeetings/%7BonlineMeeting-id%7D/virtualAppointment": {},
+    "/beta/me/onlineMeetings/microsoft.graph.createOrGet": {},
+    "/beta/me/onlineMeetings/{onlineMeetingId}/virtualAppointment": {
+      "put": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@odata.context": {
+                  "type": "string",
+                  "description": "@odata.context"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "id"
+                },
+                "externalAppointmentId": {
+                  "type": "string",
+                  "description": "externalAppointmentId"
+                },
+                "externalAppointmentUrl": {
+                  "type": "string",
+                  "description": "externalAppointmentUrl"
+                },
+                "appointmentClientJoinWebUrl": {
+                  "type": "string",
+                  "description": "appointmentClientJoinWebUrl"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "allowClientToJoinUsingBrowser": {
+                      "type": "boolean",
+                      "description": "allowClientToJoinUsingBrowser"
+                    }
+                  },
+                  "description": "settings"
+                },
+                "appointmentClients": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "displayName": {
+                        "type": "string",
+                        "description": "displayName"
+                      },
+                      "emailAddress": {
+                        "type": "string",
+                        "description": "emailAddress"
+                      },
+                      "smsCapablePhoneNumber": {
+                        "type": "string",
+                        "description": "smsCapablePhoneNumber"
+                      }
+                    }
+                  },
+                  "description": "appointmentClients"
+                }
+              }
+            },
+            "headers": {
+              "Content-Type": {
+                "description": "Content-Type",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "summary": "Create Virtual Appointment (beta)",
+        "operationId": "Create-Virtual-Appointment-beta",
+        "parameters": [
+          {
+            "name": "onlineMeetingId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Online meeting ID"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json",
+            "x-ms-visibility": "internal"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "@odata.type": {
+                  "type": "string",
+                  "description": "@odata.type",
+                  "title": "",
+                  "default": "#microsoft.graph.virtualAppointment",
+                  "x-ms-visibility": "internal"
+                },
+                "settings": {
+                  "type": "object",
+                  "properties": {
+                    "@odata.type": {
+                      "type": "string",
+                      "description": "@odata.type",
+                      "title": "",
+                      "x-ms-visibility": "internal",
+                      "default": "microsoft.graph.virtualAppointmentSettings"
+                    },
+                    "allowClientToJoinUsingBrowser": {
+                      "type": "boolean",
+                      "description": "Allow party to join without Teams client in a browser (allowClientToJoinUsingBrowser)",
+                      "title": "Allow mobile browser joining",
+                      "format": "boolean",
+                      "default": true
+                    }
+                  },
+                  "description": "settings",
+                  "required": [
+                    "allowClientToJoinUsingBrowser",
+                    "@odata.type"
+                  ]
+                },
+                "appointmentClients": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "@odata.type": {
+                        "type": "string",
+                        "description": "@odata.type",
+                        "title": "",
+                        "x-ms-visibility": "internal",
+                        "default": "microsoft.graph.virtualAppointmentUser"
+                      },
+                      "emailAddress": {
+                        "type": "string",
+                        "description": "emailAddress"
+                      },
+                      "displayName": {
+                        "type": "string",
+                        "description": "displayName"
+                      },
+                      "smsCapablePhoneNumber": {
+                        "type": "string",
+                        "description": "US 10-digit format, no country code. E.g. 555-555-1234 (smsCapablePhoneNumber)"
+                      }
+                    },
+                    "required": [
+                      "@odata.type"
+                    ]
+                  },
+                  "description": "appointmentClients"
+                }
+              },
+              "required": [
+                "settings",
+                "@odata.type",
+                "appointmentClients"
+              ],
+              "x-ms-visibility": "important"
+            },
+            "x-ms-visibility": "important"
+          }
+        ],
+        "description": "Create virtual appointment",
+        "x-ms-visibility": "important"
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "oauth2_auth": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://login.windows.net/common/oauth2/authorize",
+      "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+      "scopes": {
+        "OnlineMeetings.ReadWrite": "OnlineMeetings.ReadWrite"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth2_auth": [
+        "OnlineMeetings.ReadWrite"
+      ]
+    }
+  ],
+  "tags": []
+}
